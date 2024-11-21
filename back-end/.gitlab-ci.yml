@@ -3,7 +3,7 @@
   - main
   - dev
   - merge_reqeusts
-  - /^feature\/.*$/   # 특정 브랜치 패턴에서 실행
+  - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
     changes:
     - "back-end/**/*"
 
