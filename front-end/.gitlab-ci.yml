@@ -1,0 +1,7 @@
+
+.front-end-module:
+  variables:
+    MODULE_NAME: "front-end"
+  only:
+    changes:
+    - "front-end/**/*"

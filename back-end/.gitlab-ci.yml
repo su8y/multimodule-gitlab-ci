@@ -1,0 +1,6 @@
+.back-end-module:
+  variables:
+    MODULE_NAME: "back-end"
+  only:
+    changes:
+    - "back-end/**/*"
