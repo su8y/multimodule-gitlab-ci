@@ -4,7 +4,7 @@ stages:
 
 build-package-npm 1/2:
   stage: build-package-npm
-  befroe_script: echo npm install
+  before_script: echo npm install
   script:
   - echo npm run build
   only:
