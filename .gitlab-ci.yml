@@ -5,8 +5,14 @@ trigger module 1/2:
   stage: trigger-modules
   trigger:
     include: back-end/.gitlab-ci.yml
+  only:
+    changes:
+    - "back-end/**/*"
 
 trigger module 2/2:
   stage: trigger-modules
   trigger:
     include: front-end/.gitlab-ci.yml
+  only:
+    changes:
+    - "front-end/**/*"
