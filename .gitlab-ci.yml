@@ -1,0 +1,52 @@
+stages:
+- build
+- test
+
+.default_only_event_module
+  only:
+  - main
+  - dev
+  - merge_reqeusts    # Merge Request 이벤트에서 실행
+  - /^feature\/.*$/   # 특정 브랜치 패턴에서 실행
+
+include:
+  - local: back-end/.gitlab-ci.yml
+  - local: front-end/.gitlab-ci.yml
+
+
+.build_module:
+  stage: build
+  extends:
+  - .default_only_event_module
+  script:
+  - echo "Building $MUDLE_NAME"
+
+.test_module:
+  stage: test
+  extends:
+  - .default_only_event_module
+  script: 
+  - echo "Testing $MODULE_NAME"
+
+# --------- sub module
+    
+
+.build-back-end-module 1/2:
+  extends:
+  - .back-end_module
+  - .build_module  
+
+.build-front-end-module 2/2:
+  extends:
+  - .front-end_module
+  - .build_module  
+
+.test-back-end-module 1/2:
+  extends:
+  - .back-end_module
+  - .test_module  
+
+.test-front-end-module 2/2:
+  extends:
+  - .front-end_module
+  - .test_module  
