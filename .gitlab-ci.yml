@@ -33,20 +33,20 @@ include:
 
 .build-back-end-module 1/2:
   extends:
-  - .back-end_module
+  - .back-end-module
   - .build_module  
 
 .build-front-end-module 2/2:
   extends:
-  - .front-end_module
+  - .front-end-module
   - .build_module  
 
 .test-back-end-module 1/2:
   extends:
-  - .back-end_module
+  - .back-end-module
   - .test_module  
 
 .test-front-end-module 2/2:
   extends:
-  - .front-end_module
+  - .front-end-module
   - .test_module  
