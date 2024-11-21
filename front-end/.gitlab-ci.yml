@@ -1,7 +1,39 @@
-
-.front-end-module:
-  variables:
-    MODULE_NAME: "front-end"
+.pipeline-target
   only:
+  - main
+  - dev
+  - merge_reqeusts
+  - /^feature\/.*$/   # 특정 브랜치 패턴에서 실행
     changes:
-    - "front-end/**/*"
+    - "back-end/**/*"
+
+stages:
+- build-package-npm
+- test-package-npm
+
+build-package-npm 1/2:
+  stage: build-package-npm
+  extends: .pipeline-target
+  befroe_script: npm install
+  script:
+  - npm run build
+
+build-package-npm 2/2:
+  stage: build-package-npm
+  extends: .pipeline-target
+  script:
+  - npm clean
+
+test-package-npm 1/2:
+  stage: test-package-npm
+  extends: .pipeline-target
+  script:
+  - npm run test
+test-package-npm 2/2:
+  stage: test-package-npm
+  extends: .pipeline-target
+  before_script:
+  - npm install
+  - npm install eslint
+  script:
+  - node_modules/eslint/bin/eslint.js .

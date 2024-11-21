@@ -1,6 +1,30 @@
-.back-end-module:
-  variables:
-    MODULE_NAME: "back-end"
+.pipeline-target
   only:
+  - main
+  - dev
+  - merge_reqeusts
+  - /^feature\/.*$/   # 특정 브랜치 패턴에서 실행
     changes:
     - "back-end/**/*"
+
+stages:
+- build-package-gradle
+- test-package-gradle
+
+build-package-gradle 1/2:
+  stage: build-package-gradle
+  extends: .pipeline-target
+  script:
+  - ./gradlew build
+
+build-package-gradle 2/2:
+  stage: build-package-gradle
+  extends: .pipeline-target
+  script:
+  - ./gradlew clean
+
+test-package-gradle 1/2:
+  stage: test-package-gradle
+  extends: .pipeline-target
+  script:
+  - ./gradlew test
