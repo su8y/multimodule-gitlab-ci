@@ -1,29 +1,33 @@
-.pipeline-target
-  only:
-  - main
-  - dev
-  - merge_requests
-  - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
-
-
 stages:
 - build-package-gradle
 - test-package-gradle
 
 build-package-gradle 1/2:
   stage: build-package-gradle
-  extends: .pipeline-target
   script:
   - echo gradlew build
+  only:
+  - main
+  - dev
+  - merge_requests
+  - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
 
 build-package-gradle 2/2:
   stage: build-package-gradle
-  extends: .pipeline-target
   script:
   - echo gradlew clean
+  only:
+  - main
+  - dev
+  - merge_requests
+  - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
 
 test-package-gradle 1/1:
   stage: test-package-gradle
-  extends: .pipeline-target
   script:
   - echo gradlew test
+  only:
+  - main
+  - dev
+  - merge_requests
+  - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
