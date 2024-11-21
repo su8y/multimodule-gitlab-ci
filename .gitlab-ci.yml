@@ -2,7 +2,7 @@ stages:
 - build
 - test
 
-.default_only_event_module
+.default_only_event_module:
   only:
   - main
   - dev
