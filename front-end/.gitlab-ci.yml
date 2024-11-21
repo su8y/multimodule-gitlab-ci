@@ -2,7 +2,7 @@
   only:
   - main
   - dev
-  - merge_reqeusts
+  - merge_requests
   - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
     changes:
     - "front-end/**/*"
