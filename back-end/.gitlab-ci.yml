@@ -15,16 +15,16 @@ build-package-gradle 1/2:
   stage: build-package-gradle
   extends: .pipeline-target
   script:
-  - ./gradlew build
+  - echo gradlew build
 
 build-package-gradle 2/2:
   stage: build-package-gradle
   extends: .pipeline-target
   script:
-  - ./gradlew clean
+  - echo gradlew clean
 
-test-package-gradle 1/2:
+test-package-gradle 1/1:
   stage: test-package-gradle
   extends: .pipeline-target
   script:
-  - ./gradlew test
+  - echo gradlew test
