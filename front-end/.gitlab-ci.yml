@@ -4,19 +4,9 @@ stages:
 
 build-package-npm 1/2:
   stage: build-package-npm
-  before_script: echo npm install
+  before_script: npm install
   script:
-  - echo npm run build
-  only:
-  - main
-  - dev
-  - merge_requests
-  - /^feat\/.*$/   # 특정 브랜치 패턴에서 실행
-
-build-package-npm 2/2:
-  stage: build-package-npm
-  script:
-  - echo npm clean
+  - npm run build
   only:
   - main
   - dev
@@ -26,7 +16,7 @@ build-package-npm 2/2:
 test-package-npm 1/2:
   stage: test-package-npm
   script:
-  - echo npm run test
+  - npm run test
   only:
   - main
   - dev
@@ -35,11 +25,8 @@ test-package-npm 1/2:
 
 test-package-npm 2/2:
   stage: test-package-npm
-  before_script:
-  - echo npm install
-  - echo npm install eslint
   script:
-  - echo node_modules/eslint/bin/eslint.js .
+  - npm run lint
   only:
   - main
   - dev
