@@ -2,10 +2,9 @@ stages:
 - build-package-npm
 - test-package-npm
 
-build-package-npm 1/2:
+build-package-npm 1/1:
   stage: build-package-npm
   before_script: 
-  - ls 
   - cd front-end
   - npm install
   script:
